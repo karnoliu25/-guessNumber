@@ -1,0 +1,67 @@
+/* 主容器 */
+.container {
+  margin: auto;
+  height: 100vh;
+  width: 90%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+/* 主要界面 */
+.main-content {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.main-content .top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.main-content .middle {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-content .middle p {
+  font-size: 50px;
+  font-weight: 800;
+}
+.main-content .middle .result {
+  margin-top: 15px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 10px;
+}
+.main-content .bottom {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-content .bottom .user-input {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.main-content .bottom .user-input .user-button-area {
+  display: flex;
+  justify-content: space-around;
+}
+.main-content .bottom .record {
+  border: 1px solid green;
+  padding: 10px;
+  height: 200px;
+  overflow-y: scroll;
+}
+.author-info {
+  width: 100%;
+  border-top: 1px solid black;
+}
