@@ -92,6 +92,10 @@
 }
 
 @media screen and (max-width: 600px) {
+  .main-content .middle p {
+    font-size: 60px;
+    font-weight: 700;
+  }
   .main-content .bottom .user-input {
     display: flex;
     flex-direction: column;
