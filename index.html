@@ -22,7 +22,6 @@
         <div class="bottom">
           <div class="user-input">
             <div class="user-input-area"></div>
-            <!-- <input class="user-input-area" type="text" /> -->
             <div class="user-button-area">
               <button class="user-button commit">提交</button>
               <button class="user-button reset">重来</button>
@@ -58,13 +57,82 @@
       <!-- 作者信息 -->
       <div class="author-info">如有建议，请联系：karnoliu@163.com</div>
       <!-- 规则 -->
-      <div class="rule"></div>
+      <div class="info-box rule">
+        <p>
+          “珠玑妙算”是一款经典的数学推断游戏。你需要猜测4位不同的随机数字，猜测范围从0到9。游戏过程中会根据回答做出提示两类提示：正确数字的数量以及正确数字在正确位置的数量。
+        </p>
+        <button class="back">返回</button>
+      </div>
       <!-- 记录 -->
-      <div class="history-record"></div>
+      <div class="info-box history-record">
+        <button class="back">返回</button>
+        <ul>
+          <li>
+            <span style="color: red">2024-12-14</span> 挑战
+            <span style="color: red">19</span>次
+            <span style="color: red">00:09:36</span>
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+          <li>
+            <span>2024-12-14</span> 使用 <span>9</span>次机会 用时<span
+              >00:09:36</span
+            >
+          </li>
+        </ul>
+      </div>
       <!-- 数字键盘 -->
       <div class="number-key">
         <ul>
-          <li>0</li>
+          <li class="clicked">0</li>
           <li>1</li>
           <li>2</li>
           <li>3</li>
@@ -75,6 +143,8 @@
           <li>8</li>
           <li>9</li>
         </ul>
+        <button class="key-commit">确认</button>
+        <button class="key-clear">清除</button>
       </div>
 
       <script src="script.js"></script>
