@@ -8,10 +8,21 @@ ul {
 }
 
 button {
-  border: none;
-  background-color: #fff;
-  font-size: 20px;
+  border: 5px solid #12d7b0;
+  border-radius: 10px;
+  background-color: #12d7b0;
+  font-size: 25px;
+  font-weight: 700;
   cursor: pointer;
+  padding: 10px;
+}
+
+input {
+  height: 100px;
+  width: 200px;
+  background-color: #051e23;
+  border: 5px dashed #12d7b0;
+  border-radius: 10px;
 }
 
 /* input {

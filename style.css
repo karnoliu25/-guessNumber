@@ -6,6 +6,8 @@
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  background-color: #051e23;
+  color: #eeeeee;
 }
 /* 主要界面 */
 .main-content {
@@ -20,6 +22,15 @@
   display: flex;
   justify-content: space-between;
 }
+.main-content .top .top-button {
+  margin: 20px;
+  color: #4f6058;
+}
+.main-content .top .top-button:hover,
+.main-content .bottom .user-input .user-button:hover {
+  background-color: #eeeeee;
+  color: #051e23;
+}
 .main-content .middle {
   display: flex;
   flex-grow: 1;
@@ -27,20 +38,21 @@
   justify-content: center;
 }
 .main-content .middle p {
-  font-size: 50px;
+  font-size: 80px;
   font-weight: 800;
 }
 .main-content .middle .result {
   margin-top: 15px;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
   text-align: center;
-  border: 2px solid red;
+  border: 5px solid rgb(0, 141, 108);
   border-radius: 10px;
   padding: 10px;
 }
 .main-content .bottom {
   margin-top: 30px;
+  height: 40vh;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -49,19 +61,75 @@
 .main-content .bottom .user-input {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-self: top;
+}
+.main-content .bottom .user-input .user-input-area {
+  margin-bottom: 10vh;
+  color: #eeeeee;
+  font-size: 40px;
+  padding: 10px;
+  text-align: center;
 }
 .main-content .bottom .user-input .user-button-area {
   display: flex;
   justify-content: space-around;
 }
+.main-content .bottom .user-input .user-button-area .user-button {
+  color: #4f6058;
+}
 .main-content .bottom .record {
-  border: 1px solid green;
+  border: 1px solid #12d7b0;
+  border-radius: 5px;
   padding: 10px;
-  height: 200px;
-  overflow-y: scroll;
+  height: 30vh;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 .author-info {
   width: 100%;
   border-top: 1px solid black;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .main-content .bottom .user-input {
+    display: flex;
+    flex-direction: column;
+    align-self: top;
+    width: 40vw;
+  }
+  .main-content .bottom .user-input .user-input-area {
+    height: 50px;
+    width: 100px;
+    margin-bottom: 10px;
+    color: #eeeeee;
+    font-size: 30px;
+    padding: 5px;
+    text-align: center;
+  }
+  .main-content .bottom .user-input .user-button-area {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-content .bottom .user-input .user-button-area .user-button {
+    height: 60px;
+    width: 100px;
+    font-size: 18px;
+    color: #4f6058;
+    margin-bottom: 10px;
+  }
+  .main-content .bottom .record {
+    border: 1px solid #12d7b0;
+    border-radius: 5px;
+    padding: 5px;
+    height: 30vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    font-size: smaller;
+  }
+  .author-info {
+    width: 100%;
+    border-top: 1px solid black;
+    text-align: center;
+  }
 }
