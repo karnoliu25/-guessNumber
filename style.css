@@ -64,11 +64,19 @@
   align-self: top;
 }
 .main-content .bottom .user-input .user-input-area {
+  height: 100px;
+  width: 200px;
+  background-color: #051e23;
+  border: 5px dashed #12d7b0;
+  border-radius: 10px;
   margin-bottom: 10vh;
   color: #eeeeee;
   font-size: 40px;
   padding: 10px;
   text-align: center;
+}
+.main-content .bottom .user-input .user-input-area:hover {
+  cursor: pointer;
 }
 .main-content .bottom .user-input .user-button-area {
   display: flex;
@@ -90,50 +98,42 @@
   border-top: 1px solid black;
   text-align: center;
 }
-
+.rule {
+  display: none;
+}
+.history-record {
+  display: none;
+}
+.number-key {
+  display: none;
+}
 @media screen and (max-width: 600px) {
   .main-content .middle p {
     font-size: 60px;
     font-weight: 700;
   }
   .main-content .bottom .user-input {
-    display: flex;
-    flex-direction: column;
-    align-self: top;
     width: 40vw;
   }
+
   .main-content .bottom .user-input .user-input-area {
     height: 50px;
     width: 100px;
     margin-bottom: 10px;
-    color: #eeeeee;
     font-size: 30px;
     padding: 5px;
-    text-align: center;
   }
   .main-content .bottom .user-input .user-button-area {
-    display: flex;
     flex-direction: column;
   }
   .main-content .bottom .user-input .user-button-area .user-button {
     height: 60px;
     width: 100px;
     font-size: 18px;
-    color: #4f6058;
     margin-bottom: 10px;
   }
   .main-content .bottom .record {
-    border: 1px solid #12d7b0;
-    border-radius: 5px;
     padding: 5px;
-    height: 30vh;
-    overflow-y: auto;
-    scrollbar-width: none;
     font-size: smaller;
-  }
-  .author-info {
-    width: 100%;
-    border-top: 1px solid black;
-    text-align: center;
   }
 }
