@@ -122,6 +122,7 @@
 }
 .rule {
   display: none;
+  font-size: 30px;
 }
 .history-record {
   display: none;
@@ -184,7 +185,7 @@
     height: 50px;
     width: 100px;
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 20px;
     padding: 5px;
   }
   .main-content .bottom .user-input .user-button-area {

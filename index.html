@@ -12,8 +12,8 @@
       <!-- 主页面 -->
       <div class="main-content">
         <div class="top">
-          <button class="top-button">规则</button>
-          <button class="top-button">记录</button>
+          <button class="top-button" id="rule-button">规则</button>
+          <button class="top-button" id="record-button">记录</button>
         </div>
         <div class="middle">
           <p>珠玑妙算</p>
@@ -21,7 +21,7 @@
         </div>
         <div class="bottom">
           <div class="user-input">
-            <div class="user-input-area"></div>
+            <div class="user-input-area">点击输入</div>
             <div class="user-button-area">
               <button class="user-button commit">提交</button>
               <button class="user-button reset">重来</button>
@@ -58,8 +58,10 @@
       <div class="author-info">如有建议，请联系：karnoliu@163.com</div>
       <!-- 规则 -->
       <div class="info-box rule">
+        <p>&nbsp;&nbsp;“珠玑妙算”是一款经典的数学推断游戏。</p>
+        <p>&nbsp;&nbsp;你需要猜测4位不同的随机数字，猜测范围从0到9。</p>
         <p>
-          “珠玑妙算”是一款经典的数学推断游戏。你需要猜测4位不同的随机数字，猜测范围从0到9。游戏过程中会根据回答做出提示两类提示：正确数字的数量以及正确数字在正确位置的数量。
+          &nbsp;&nbsp;游戏过程中会根据回答做出提示两类提示：正确数字的数量以及正确数字在正确位置的数量。
         </p>
         <button class="back">返回</button>
       </div>
@@ -132,7 +134,7 @@
       <!-- 数字键盘 -->
       <div class="number-key">
         <ul>
-          <li class="clicked">0</li>
+          <li>0</li>
           <li>1</li>
           <li>2</li>
           <li>3</li>
@@ -144,7 +146,7 @@
           <li>9</li>
         </ul>
         <button class="key-commit">确认</button>
-        <button class="key-clear">清除</button>
+        <button class="back">返回</button>
       </div>
 
       <script src="script.js"></script>
