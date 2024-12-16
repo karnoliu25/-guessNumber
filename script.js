@@ -53,6 +53,7 @@ for (let i = 0; i < numberKeyValue.length; i++) {
     // FIXME:这里需要修改
     if (numberArray.length > 4) {
       console.log("wrong");
+
       return;
     }
     console.log("获取的数组" + numberArray);
