@@ -38,24 +38,29 @@ userInput.addEventListener("click", () => {
 });
 const numberKeyValue = document.querySelectorAll(".number-key ul li");
 let numberArray = [];
+
 for (let i = 0; i < numberKeyValue.length; i++) {
+  let clickedNumber = document.getElementsByClassName("clicked");
+
   numberKeyValue[i].addEventListener("click", () => {
-    if (numberKeyValue[i].className == "clicked") {
+    if (numberKeyValue[i].className == "") {
+      numberKeyValue[i].className = "clicked";
+      if (clickedNumber.length == 5) {
+        numberKeyValue[i].className = "";
+        // numberKeyValue[i].style.cursor = "not-allowed";
+        alert(`只能选择4位数字哦`);
+        return;
+      }
+      numberArray.push(numberKeyValue[i].innerText);
+    } else if (numberKeyValue[i].className == "clicked") {
       numberKeyValue[i].className = "";
       numberArray = numberArray.filter(
         (item) => item !== numberKeyValue[i].innerText
       );
-    } else {
-      numberKeyValue[i].className = "clicked";
-
-      numberArray.push(numberKeyValue[i].innerText);
     }
-    // FIXME:这里需要修改
-    if (numberArray.length > 4) {
-      console.log("wrong");
 
-      return;
-    }
-    console.log("获取的数组" + numberArray);
+    userInput.innerText = numberArray.join("");
+
+    console.log("获取的数组:" + numberArray);
   });
 }
