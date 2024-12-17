@@ -7,6 +7,7 @@ const recordButton = document.querySelector("#record-button");
 const historyRecord = document.querySelector(".history-record");
 const userInput = document.querySelector(".user-input-area");
 const numberKey = document.querySelector(".number-key");
+const keyCommit = document.querySelector(".key-commit");
 
 // 用户数据对象
 const userData = {
@@ -14,6 +15,8 @@ const userData = {
   challenge: 0,
   challengeTime: 0,
 };
+
+// 随机四位数字谜底
 
 // 规则按钮事件
 ruleButton.addEventListener("click", () => {
@@ -36,18 +39,17 @@ userInput.addEventListener("click", () => {
   numberKey.style.display = "flex";
   userInput.innerHTML = "";
 });
+// 数字键盘输入事件
 const numberKeyValue = document.querySelectorAll(".number-key ul li");
 let numberArray = [];
-
 for (let i = 0; i < numberKeyValue.length; i++) {
   let clickedNumber = document.getElementsByClassName("clicked");
 
   numberKeyValue[i].addEventListener("click", () => {
     if (numberKeyValue[i].className == "") {
       numberKeyValue[i].className = "clicked";
-      if (clickedNumber.length == 5) {
+      if (clickedNumber.length >= 5) {
         numberKeyValue[i].className = "";
-        // numberKeyValue[i].style.cursor = "not-allowed";
         alert(`只能选择4位数字哦`);
         return;
       }
@@ -64,3 +66,18 @@ for (let i = 0; i < numberKeyValue.length; i++) {
     console.log("获取的数组:" + numberArray);
   });
 }
+// 数字键盘提交按钮事件
+keyCommit.addEventListener("click", () => {
+  let userInputNumber = userInput.innerText;
+  if (userInputNumber.length == 0) {
+    alert(`请选择4位数字哦`);
+    return;
+  } else if (userInputNumber.length < 4) {
+    alert(`还没选够4位数字哦`);
+    return;
+  } else if (userInputNumber.length == 4) {
+    numberKey.style.display = "none";
+  }
+  userData.userInputData = userInputNumber;
+  console.log("获取数字" + userData.userInputData);
+});
