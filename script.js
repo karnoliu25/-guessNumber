@@ -51,7 +51,7 @@ const resetGame = function () {
   userData.challengeTime = 0;
   userInput.innerText = "点击输入";
   recordArea.innerHTML = "";
-
+  resultArea.innerHTML = "?";
   numberArray = [];
   for (let i = 0; i < numberKeyValue.length; i++) {
     numberKeyValue[i].className = "";
