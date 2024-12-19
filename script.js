@@ -181,4 +181,6 @@ keyBack.addEventListener("click", () => {
     }
   }
   numberKey.style.display = "none";
+  commitBtn.style.display = "block";
+  resetBtn.style.display = "block";
 });
