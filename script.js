@@ -6,6 +6,10 @@ const backButton = document.querySelectorAll(".back");
 const recordButton = document.querySelector("#record-button");
 const historyRecord = document.querySelector(".history-record");
 const userInput = document.querySelector(".user-input-area");
+// 获取游戏内记录区域元素
+const recordArea = document.querySelector(".record ul");
+// 获取游戏结果区域元素
+const resultArea = document.querySelector(".result");
 // 获取数字键盘/数字键盘提交按钮/数字键盘返回按钮元素
 const numberKey = document.querySelector(".number-key");
 const keyCommit = document.querySelector(".key-commit");
@@ -13,14 +17,16 @@ const keyBack = document.querySelector(".key-back");
 // 获取数字键盘数字按钮元素
 const numberKeyValue = document.querySelectorAll(".number-key ul li");
 // 获取提交/重新玩按钮元素
-const commitBtn = document.querySelectorAll(".commit");
-const resetBtn = document.querySelectorAll(".reset");
+const commitBtn = document.querySelectorAll(".commit")[0];
+const resetBtn = document.querySelectorAll(".reset")[0];
 
 // 用户数据对象
 const userData = {
   userInputData: 0,
   challenge: 0,
   challengeTime: 0,
+  rightNumberCount: 0,
+  rightPositionCount: 0,
 };
 
 // 随机四位数字谜底
@@ -34,9 +40,72 @@ const gamePlay = function () {
     }
   }
   gameSolution = solution.join("");
-  console.log("数字" + gameSolution);
 };
 gamePlay();
+
+// 重置按钮事件
+
+const resetGame = function () {
+  userData.userInputData = 0;
+  userData.challenge = 0;
+  userData.challengeTime = 0;
+  userInput.innerText = "点击输入";
+  recordArea.innerHTML = "";
+
+  numberArray = [];
+  for (let i = 0; i < numberKeyValue.length; i++) {
+    numberKeyValue[i].className = "";
+  }
+  gamePlay();
+};
+
+resetBtn.addEventListener("click", () => {
+  resetGame();
+});
+// 提交按钮事件
+const recordLi = document.createElement("li");
+commitBtn.addEventListener("click", () => {
+  if (resultArea.innerText == gameSolution) {
+    if (confirm(`您要重新挑战游戏吗?`)) {
+      resetGame();
+      return;
+    } else {
+      return;
+    }
+  }
+  userData.rightNumberCount = 0;
+  userData.rightPositionCount = 0;
+  userData.challenge += 1;
+  const recordLi = document.createElement("li");
+  if (userData.userInputData == 0) {
+    alert(`请选择4位数字哦`);
+    if (userData.challenge == 1) {
+      userData.challenge = 0;
+      return;
+    } else {
+      userData.challenge -= 1;
+      return;
+    }
+  }
+  for (let i = 0; i < 4; i++) {
+    if (userData.userInputData[i] == gameSolution[i]) {
+      userData.rightNumberCount += 1;
+      userData.rightPositionCount += 1;
+    } else if (gameSolution.indexOf(userData.userInputData[i]) != -1) {
+      userData.rightNumberCount += 1;
+    } else {
+      continue;
+    }
+  }
+  if (userData.rightPositionCount == 4) {
+    resultArea.innerHTML = `${gameSolution}`;
+    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> 挑战成功! </span>一共使用 ${userData.challenge} 次机会.`;
+    alert(`恭喜你猜对了！答案是${gameSolution}`);
+  } else {
+    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> ${userData.challenge}. </span>数字正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightNumberCount} </span>位，位置正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightPositionCount} </span>位`;
+  }
+  recordArea.appendChild(recordLi);
+});
 
 // 规则按钮事件
 ruleButton.addEventListener("click", () => {
@@ -102,7 +171,7 @@ keyBack.addEventListener("click", () => {
   let userInputNumber = userInput.innerText;
   if (userInputNumber.length != 4 || userData.userInputData.length != 4) {
     userData.userInputData = 0;
-    userInput.innerText = "";
+    userInput.innerText = "点击输入";
     numberArray = [];
     for (let i = 0; i < numberKeyValue.length; i++) {
       numberKeyValue[i].className = "";

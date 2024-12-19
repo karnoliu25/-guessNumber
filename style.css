@@ -88,6 +88,7 @@
   color: #4f6058;
 }
 .main-content .bottom .record {
+  width: 40vw;
   border: 1px solid #12d7b0;
   border-radius: 5px;
   padding: 10px;
@@ -199,6 +200,6 @@
   }
   .main-content .bottom .record {
     padding: 5px;
-    font-size: smaller;
+    font-size: small;
   }
 }
