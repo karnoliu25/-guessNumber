@@ -12,6 +12,9 @@ const keyCommit = document.querySelector(".key-commit");
 const keyBack = document.querySelector(".key-back");
 // 获取数字键盘数字按钮元素
 const numberKeyValue = document.querySelectorAll(".number-key ul li");
+// 获取提交/重新玩按钮元素
+const commitBtn = document.querySelectorAll(".commit");
+const resetBtn = document.querySelectorAll(".reset");
 
 // 用户数据对象
 const userData = {
@@ -21,6 +24,19 @@ const userData = {
 };
 
 // 随机四位数字谜底
+let gameSolution = 0;
+const gamePlay = function () {
+  let solution = [];
+  while (solution.length >= 0 && solution.length < 4) {
+    let solutionNumber = Math.floor(Math.random() * 10);
+    if (solution.indexOf(solutionNumber) == -1) {
+      solution.push(solutionNumber);
+    }
+  }
+  gameSolution = solution.join("");
+  console.log("数字" + gameSolution);
+};
+gamePlay();
 
 // 规则按钮事件
 ruleButton.addEventListener("click", () => {
@@ -65,7 +81,6 @@ for (let i = 0; i < numberKeyValue.length; i++) {
     }
 
     userInput.innerText = numberArray.join("");
-    console.log(userInput);
   });
 }
 // 数字键盘提交按钮事件
