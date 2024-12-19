@@ -99,10 +99,10 @@ commitBtn.addEventListener("click", () => {
   }
   if (userData.rightPositionCount == 4) {
     resultArea.innerHTML = `${gameSolution}`;
-    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> 挑战成功! </span>一共使用 ${userData.challenge} 次机会.`;
+    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> 挑战成功! </span>一共使用<span style="color: rgb(6, 229, 6)"> ${userData.challenge}  </span>次机会.`;
     alert(`恭喜你猜对了！答案是${gameSolution}`);
   } else {
-    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> ${userData.challenge}. </span>数字正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightNumberCount} </span>位，位置正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightPositionCount} </span>位`;
+    recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)">${userData.userInputData}</span> 挑战 <span style="color: rgb(6, 229, 6)"> ${userData.challenge}次 </span>数字正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightNumberCount} </span>位，位置正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightPositionCount} </span>位`;
   }
   recordArea.appendChild(recordLi);
 });
