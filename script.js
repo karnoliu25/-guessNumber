@@ -44,7 +44,6 @@ const gamePlay = function () {
 gamePlay();
 
 // 重置按钮事件
-
 const resetGame = function () {
   userData.userInputData = 0;
   userData.challenge = 0;
@@ -58,7 +57,6 @@ const resetGame = function () {
   }
   gamePlay();
 };
-
 resetBtn.addEventListener("click", () => {
   resetGame();
 });
@@ -126,10 +124,13 @@ for (let i = 0; i < backButton.length; i++) {
 // 用户输入按钮
 userInput.addEventListener("click", () => {
   numberKey.style.display = "flex";
+  userInput.style.color = "red";
+  commitBtn.style.display = "none";
+  resetBtn.style.display = "none";
 });
 // 数字键盘输入事件
-
 let numberArray = [];
+
 for (let i = 0; i < numberKeyValue.length; i++) {
   let clickedNumber = document.getElementsByClassName("clicked");
 
@@ -148,7 +149,6 @@ for (let i = 0; i < numberKeyValue.length; i++) {
         (item) => item !== numberKeyValue[i].innerText
       );
     }
-
     userInput.innerText = numberArray.join("");
   });
 }
@@ -164,6 +164,9 @@ keyCommit.addEventListener("click", () => {
   } else if (userInputNumber.length == 4) {
     userData.userInputData = userInputNumber;
     numberKey.style.display = "none";
+    userInput.style.color = "white";
+    commitBtn.style.display = "block";
+    resetBtn.style.display = "block";
   }
 });
 // 数字键盘返回
