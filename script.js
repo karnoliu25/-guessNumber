@@ -4,9 +4,8 @@ const ruleButton = document.querySelector("#rule-button");
 const rule = document.querySelector(".rule");
 const backButton = document.querySelectorAll(".back");
 const recordButton = document.querySelector("#record-button");
-// TODO:
-// const historyRecord = document.querySelector(".history-record");
-// const historyRecordList = document.querySelector(".history-record ul");
+const historyRecord = document.querySelector(".history-record");
+const historyRecordList = document.querySelector(".history-record ul");
 const userInput = document.querySelector(".user-input-area");
 // 获取游戏内记录区域元素
 const recordArea = document.querySelector(".record ul");
@@ -45,31 +44,33 @@ const gamePlay = function () {
   console.log(gameSolution);
 };
 gamePlay();
-
-// TODO:
-// // 存档
-// const saveData = function () {
-//   const myDate = new Date().toLocaleDateString();
-//   const myDateArr = [];
-//   const myChallengeArr = [];
-//   myDateArr.push(myDate);
-//   myChallengeArr.push(userData.challenge);
-//   localStorage.setItem("date", JSON.stringify(myDateArr));
-//   localStorage.setItem("challenge", JSON.stringify(myChallengeArr));
-// };
-
-// // 记录事件
-// const historyRecordLook = function () {
-//   const historyList = document.createElement("li");
-//   for (let i = 0; i < localStorage.length; i++) {
-//     const localDate = JSON.parse(localStorage.getItem("date"))[i];
-//     const localChallenge = JSON.parse(localStorage.getItem("challenge"))[i];
-//     console.log(localChallenge, localDate);
-//     historyList.innerHTML = `<span style="color: rgb(12, 46, 12)"> ${localDate} </span>挑战成功!一共使用<span style="color: rgb(12, 46, 12)"> ${localChallenge}  </span>次机会.`;
-//   }
-//   historyRecordList.appendChild(historyList);
-// };
-
+// 获取挑战成功年月日
+function getDate() {
+  let dateValue = new Date();
+  let year = dateValue.getFullYear();
+  let month = dateValue.getMonth() + 1;
+  let date = dateValue.getDate();
+  const dateString = year + "-" + month + "-" + date;
+  userData.challengeDate = dateString;
+}
+// 保存数据至浏览器
+const saveData = function () {
+  const storedData = localStorage.getItem("saveUserData");
+  const saveArray = storedData ? JSON.parse(storedData) : [];
+  saveArray.push(userData);
+  localStorage.setItem("saveUserData", JSON.stringify(saveArray));
+};
+// 加载历史记录
+function historyList() {
+  const storeHistory = localStorage.getItem("saveUserData");
+  const historyData = storeHistory ? JSON.parse(storeHistory) : [];
+  for (const key in historyData) {
+    historyRecordList.innerHTML += `<li style="font-weight:bold">
+    ${historyData[key].challengeDate} 答案${historyData[key].userInputData} 使用${historyData[key].challenge}次机会
+    </li>`;
+  }
+}
+// historyRecordList
 // 重置按钮事件
 const resetGame = function () {
   userData.userInputData = 0;
@@ -126,8 +127,9 @@ commitBtn.addEventListener("click", () => {
   if (userData.rightPositionCount == 4) {
     resultArea.innerHTML = `${gameSolution}`;
     recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)"> 挑战成功! </span>一共使用<span style="color: rgb(6, 229, 6)"> ${userData.challenge}  </span>次机会.`;
-    // TODO:将成功记录到本地浏览器中
-    // saveData();
+    // 将成功记录到本地浏览器中
+    getDate();
+    saveData();
     alert(`恭喜你猜对了！答案是${gameSolution}`);
   } else {
     recordLi.innerHTML = `<span style="color: rgb(6, 229, 6)">${userData.userInputData}</span> 挑战 <span style="color: rgb(6, 229, 6)"> ${userData.challenge}次 </span>数字正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightNumberCount} </span>位，位置正确:<span style="color: rgb(6, 229, 6)"> ${userData.rightPositionCount} </span>位`;
@@ -139,26 +141,23 @@ commitBtn.addEventListener("click", () => {
 ruleButton.addEventListener("click", () => {
   rule.style.display = "block";
 });
-// TODO:
 // 历史记录按钮事件
-// recordButton.addEventListener("click", () => {
-//   historyRecordLook();
-//   historyRecord.style.display = "block";
-// });
+recordButton.addEventListener("click", () => {
+  historyList();
+  historyRecord.style.display = "block";
+});
 // 返回按钮事件
 for (let i = 0; i < backButton.length; i++) {
   backButton[i].addEventListener("click", () => {
     rule.style.display = "none";
-    // TODO:
-    // historyRecord.style.display = "none";
-    // historyRecordList.innerHTML = "";
+    historyRecord.style.display = "none";
+    historyRecordList.innerHTML = "";
   });
 }
 
 // 用户输入按钮
 userInput.addEventListener("click", () => {
   numberKey.style.display = "flex";
-  userInput.style.color = "red";
   commitBtn.style.display = "none";
   resetBtn.style.display = "none";
 });
