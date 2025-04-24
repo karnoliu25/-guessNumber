@@ -41,7 +41,6 @@ const gamePlay = function () {
     }
   }
   gameSolution = solution.join("");
-  console.log(gameSolution);
 };
 gamePlay();
 // 获取挑战成功年月日
